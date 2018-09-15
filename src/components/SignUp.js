@@ -32,14 +32,13 @@ class SignUpForm extends PureComponent {
 
   onSubmit = (e) => {
     const {
-      username,
       email,
       passwordOne,
     } = this.state;
     const { history } = this.props;
 
     auth.doCreateUserWithEmailAndPassword(email, passwordOne)
-      .then(authUser => {
+      .then(() => {
         // Set the local state to its initial state to empty input fields
         this.setState({ ...INITIAL_STATE });
         history.push(routes.HOME);
