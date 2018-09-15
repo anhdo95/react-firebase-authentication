@@ -1,8 +1,10 @@
-body {
-  text-align: center;
+#app {
+  width: 50%;
+  margin: 0 auto;
 }
 
 .nav-bar {
+  padding: 0;
   display: inline-block;
 }
 .nav-bar::after {
@@ -17,7 +19,8 @@ body {
 }
 
 .nav-bar > li > a {
-  padding: 10px 16px;
+  padding: 10px 0;
+  margin-right: 20px;
   text-decoration: none;
   color: #f46868;
 }

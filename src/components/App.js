@@ -15,10 +15,10 @@ import withAuthentication from './withAuthentication';
 
 const App = () => 
   <Router>
-    <div>
+    <div id="app">
       <Navigation />
       <hr />
-      <main class="main">
+      <main>
         <Route exact path={routes.LANDING} component={LandingPage} />
         <Route exact path={routes.SIGN_UP} component={SignUpPage} />
         <Route exact path={routes.SIGN_IN} component={SignInPage} />

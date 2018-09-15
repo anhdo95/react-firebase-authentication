@@ -11,7 +11,7 @@ const Navigation = () =>
   </AuthUserContext.Consumer>
 
 const NavigationAuth = () => 
-  <ul class="nav-bar">
+  <ul className="nav-bar">
     <li><Link to={routes.LANDING}>Landing</Link></li>
     <li><Link to={routes.HOME}>Home</Link></li>
     <li><Link to={routes.ACCOUNT}>Account</Link></li>
@@ -19,7 +19,7 @@ const NavigationAuth = () =>
   </ul>
 
 const NavigationNonAuth = () => 
-  <ul class="nav-bar">
+  <ul className="nav-bar">
     <li><Link to={routes.LANDING}>Landing</Link></li>
     <li><Link to={routes.SIGN_IN}>Sign in</Link></li>
   </ul>
