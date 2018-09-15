@@ -40,9 +40,16 @@ class SignUpForm extends PureComponent {
 
     auth.doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
-        // Set the local state to its initial state to empty input fields
-        this.setState({ ...INITIAL_STATE });
-        history.push(routes.HOME);
+        // Create a user in your own accessible Firebase Database too
+        db.doCreateUser(authUser.user.uid, username, email)
+          .then(() => {
+            // Set the local state to its initial state to empty input fields
+            this.setState({ ...INITIAL_STATE });
+            history.push(routes.HOME);
+          })
+          .catch(error => {
+            this.setState(byPropKey('error', error));
+          });
       })
       .catch(error => {
         this.setState(byPropKey('error', error));
