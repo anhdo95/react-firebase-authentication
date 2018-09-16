@@ -12,10 +12,6 @@ const INITIAL_STATE = {
   error: null,
 };
 
-const byPropKey = (propertyName, value) => () => ({
-  [propertyName]: value
-});
-
 const SignInPage = ({ history }) =>
   <div>
     <h1>SignIn</h1>
@@ -29,6 +25,11 @@ class SignInForm extends PureComponent {
     super(props);
 
     this.state = { ...INITIAL_STATE };
+  }
+
+  onChange = (e) => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
   }
 
   onSubmit = (e) => {
@@ -45,7 +46,7 @@ class SignInForm extends PureComponent {
         history.push(routes.HOME);
       })
       .catch(error => {
-        this.setState(byPropKey('error', error));
+        this.setState({ error });
       })
 
     e.preventDefault();
@@ -63,13 +64,15 @@ class SignInForm extends PureComponent {
       <form onSubmit={this.onSubmit}>
         <input
           value={email}
-          onChange={e => this.setState(byPropKey('email', e.target.value))}
+          onChange={this.onChange}
+          name="email"
           type="email"
           placeholder="Email Address"
         />
         <input
           value={password}
-          onChange={e => this.setState(byPropKey('password', e.target.value))}
+          onChange={this.onChange}
+          name="password"
           type="password"
           placeholder="Password"
         />
